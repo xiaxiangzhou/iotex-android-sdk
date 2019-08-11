@@ -657,5 +657,22 @@ public class SmartContractQuery {
         // gas limit should larger than 1,000,000
         String hash = contract_one.execute(null, 1000000l, "1000000000000", account, "buyContract", amount);
         System.out.println(hash);
+        
+        
+        /*
+	        // FailureReceiptStatus is the status that contract execution failed
+	        FailureReceiptStatus = 0
+	        // SuccessReceiptStatus is the status that contract execution success
+	        SuccessReceiptStatus = 1
+        */
+        // fail action
+        String receipt_hash = "385955c37176cbba2de38ca162f8c8d21b5231347fd365432e06331af4ebe61f";
+        GetReceiptByActionResponse response = provider.getReceiptByAction(GetReceiptByActionRequest.newBuilder().setActionHash(receipt_hash).build());
+        System.out.println(response.getReceiptInfo().getReceipt().getStatus());
+
+        // success action
+        receipt_hash = "007953112a174deeff433ff26ed1bb6b90bb26cd5065a640a175a81af8d9b5e8";
+        response = provider.getReceiptByAction(GetReceiptByActionRequest.newBuilder().setActionHash(receipt_hash).build());
+        System.out.println(response.getReceiptInfo().getReceipt().getStatus());
     }
 }
