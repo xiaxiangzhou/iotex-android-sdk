@@ -644,12 +644,18 @@ public class SmartContractQuery {
 
         result = contract_one.read(account_address, "seller");
         System.out.println(result);
-
-        result = contract_one.read(account_address, "flightStatus");
+	    
+	result = contract_one.read(account_address, "contractStatus");
         System.out.println(result);
 
-        result = contract_one.read(account_address, "contractStatus");
-        System.out.println(result);
+        List flightStatus = contract_one.read(account_address, "flightStatus");
+        System.out.println(flightStatus);
+
+        List validMaxBenefit = contract_one.read(account_address, "validMaxBenefit");
+        System.out.println(validMaxBenefit);
+
+        List benefit = contract_one.read(account_address, "getBenefitByFlightStatus", validMaxBenefit.get(0), flightStatus.get(0));
+        System.out.println(benefit);
 
         String account_private_key = "7a90c8bb40be77f6328e3eb9b02012a8ba9eda206f248ab16df7bdc32b838bf4";
         String amount = "6000000000000000000"; // amount should larger than premium
