@@ -656,13 +656,24 @@ public class SmartContractQuery {
 
         List benefit = contract_one.read(account_address, "getBenefitByFlightStatus", validMaxBenefit.get(0), flightStatus.get(0));
         System.out.println(benefit);
+	    
+	// create new account
+        Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
+        Account newAccount = IotexAccount.create();
+        String private_key = Numeric.toHexString(newAccount.privateKey());
+        System.out.println(private_key); // private key of new account
+        System.out.println(newAccount.address()); // address of new account
 
         String account_private_key = "7a90c8bb40be77f6328e3eb9b02012a8ba9eda206f248ab16df7bdc32b838bf4";
 	Account account = IotexAccount.create(account_private_key);
 	System.out.println(account.address()); // address
+	private_key = Numeric.toHexString(account.privateKey());
+        System.out.println(private_key); // private key
+	
 	GetAccountResponse res = provider.getAccount(GetAccountRequest.newBuilder().setAddress(account.address()).build());
-        System.out.println(res.getAccountMeta().getBalance());
-        String amount = "6000000000000000000"; // amount should larger than premium
+        System.out.println(res.getAccountMeta().getBalance()); // get balance
+        
+	String amount = "6000000000000000000"; // amount should larger than premium
         // gas limit should larger than 1,000,000
         String hash = contract_one.execute(null, 1000000l, "1000000000000", account, "buyContract", amount);
         System.out.println(hash);
