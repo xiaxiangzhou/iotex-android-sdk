@@ -658,8 +658,9 @@ public class SmartContractQuery {
         System.out.println(benefit);
 
         String account_private_key = "7a90c8bb40be77f6328e3eb9b02012a8ba9eda206f248ab16df7bdc32b838bf4";
+	Account account = IotexAccount.create(account_private_key);
+	System.out.println(account.address()); // address
         String amount = "6000000000000000000"; // amount should larger than premium
-        Account account = IotexAccount.create(account_private_key);
         // gas limit should larger than 1,000,000
         String hash = contract_one.execute(null, 1000000l, "1000000000000", account, "buyContract", amount);
         System.out.println(hash);
