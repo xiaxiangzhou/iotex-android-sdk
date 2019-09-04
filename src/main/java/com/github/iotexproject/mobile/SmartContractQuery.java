@@ -1,11 +1,20 @@
 package com.github.iotexproject.mobile;
 
-
+import com.github.iotexproject.grpc.api.GetAccountRequest;
+import com.github.iotexproject.grpc.api.GetAccountResponse;
+import com.github.iotexproject.grpc.api.GetReceiptByActionRequest;
+import com.github.iotexproject.grpc.api.GetReceiptByActionResponse;
+import com.github.iotexproject.grpc.types.Transfer;
 import com.github.iotexproject.mobile.account.Account;
 import com.github.iotexproject.mobile.account.IotexAccount;
 import com.github.iotexproject.mobile.contract.Contract;
+import com.github.iotexproject.mobile.protocol.IOTX;
+import com.github.iotexproject.mobile.protocol.TransferRequest;
 import com.github.iotexproject.mobile.rpc.RPCMethod;
+import com.github.iotexproject.mobile.utils.Numeric;
+import com.google.protobuf.ByteString;
 
+import java.security.Security;
 import java.util.List;
 
 public class SmartContractQuery {
@@ -694,5 +703,18 @@ public class SmartContractQuery {
         receipt_hash = "007953112a174deeff433ff26ed1bb6b90bb26cd5065a640a175a81af8d9b5e8";
         response = provider.getReceiptByAction(GetReceiptByActionRequest.newBuilder().setActionHash(receipt_hash).build());
         System.out.println(response.getReceiptInfo().getReceipt().getStatus());
+	    
+	IOTX iotx = new IOTX("api.testnet.iotex.one:80");
+
+        TransferRequest request = new TransferRequest();
+        //request.setNonce(1l); // optional, can be null
+        request.setGasLimit(1000000l); // optional, can be null
+        request.setGasPrice("1000000000000"); // optional, can be null
+        request.setAccount(account);
+        request.setAmount("1000000000000000000"); // 1 iotex
+        request.setRecipient("io13zt8sznez2pf0q0hqdz2hyl938wak2fsjgdeml");
+
+        hash = iotx.sendTransfer(request);
+        System.out.println(hash);
     }
 }
