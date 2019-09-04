@@ -1,9 +1,6 @@
 package com.github.iotexproject.mobile;
 
-import com.github.iotexproject.grpc.api.GetAccountRequest;
-import com.github.iotexproject.grpc.api.GetAccountResponse;
-import com.github.iotexproject.grpc.api.GetReceiptByActionRequest;
-import com.github.iotexproject.grpc.api.GetReceiptByActionResponse;
+import com.github.iotexproject.grpc.api.*;
 import com.github.iotexproject.grpc.types.Transfer;
 import com.github.iotexproject.mobile.account.Account;
 import com.github.iotexproject.mobile.account.IotexAccount;
@@ -716,5 +713,24 @@ public class SmartContractQuery {
 
         hash = iotx.sendTransfer(request);
         System.out.println(hash);
+	    
+	res = provider.getAccount(GetAccountRequest.newBuilder().setAddress(account.address()).build());
+        System.out.println(res.getAccountMeta().getNumActions());
+        long actionNum = res.getAccountMeta().getNumActions();
+
+        GetActionsResponse actionResponse = provider.getActions(
+                GetActionsRequest.newBuilder().setByAddr(
+                        GetActionsByAddressRequest.newBuilder().setAddress(account.address()).setStart(actionNum-2).setCount(2)
+                ).build()
+        );
+        System.out.println(actionResponse.getActionInfoList().size());
+        for (ActionInfo af : actionResponse.getActionInfoList()) {
+            if (af.getAction().getCore().hasTransfer()) {
+                System.out.println(af.getTimestamp());
+                System.out.println(af.getSender());
+                System.out.println(af.getAction().getCore().getTransfer().getRecipient());
+                System.out.println(af.getAction().getCore().getTransfer().getAmount());
+            }
+        }
     }
 }
