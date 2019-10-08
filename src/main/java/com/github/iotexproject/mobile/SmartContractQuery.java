@@ -1,4 +1,5 @@
-package com.github.iotexproject.mobile;
+package com.github.iotexproject.mobile.example;
+
 
 import com.github.iotexproject.grpc.api.*;
 import com.github.iotexproject.grpc.types.Transfer;
@@ -145,7 +146,7 @@ public class SmartContractQuery {
                 "\t}\n" +
                 "]";
 
-        String ABI_CONTRACT_ONE = "[\n" +
+        String ABI_CONTRACT_TWO = "[\n" +
                 "\t{\n" +
                 "\t\t\"constant\": true,\n" +
                 "\t\t\"inputs\": [],\n" +
@@ -195,6 +196,20 @@ public class SmartContractQuery {
                 "\t\t],\n" +
                 "\t\t\"payable\": false,\n" +
                 "\t\t\"stateMutability\": \"pure\",\n" +
+                "\t\t\"type\": \"function\"\n" +
+                "\t},\n" +
+                "\t{\n" +
+                "\t\t\"constant\": true,\n" +
+                "\t\t\"inputs\": [],\n" +
+                "\t\t\"name\": \"validFlightName\",\n" +
+                "\t\t\"outputs\": [\n" +
+                "\t\t\t{\n" +
+                "\t\t\t\t\"name\": \"\",\n" +
+                "\t\t\t\t\"type\": \"bytes32\"\n" +
+                "\t\t\t}\n" +
+                "\t\t],\n" +
+                "\t\t\"payable\": false,\n" +
+                "\t\t\"stateMutability\": \"view\",\n" +
                 "\t\t\"type\": \"function\"\n" +
                 "\t},\n" +
                 "\t{\n" +
@@ -293,6 +308,34 @@ public class SmartContractQuery {
                 "\t{\n" +
                 "\t\t\"constant\": true,\n" +
                 "\t\t\"inputs\": [],\n" +
+                "\t\t\"name\": \"validTimestampEndOfDate\",\n" +
+                "\t\t\"outputs\": [\n" +
+                "\t\t\t{\n" +
+                "\t\t\t\t\"name\": \"\",\n" +
+                "\t\t\t\t\"type\": \"uint256\"\n" +
+                "\t\t\t}\n" +
+                "\t\t],\n" +
+                "\t\t\"payable\": false,\n" +
+                "\t\t\"stateMutability\": \"view\",\n" +
+                "\t\t\"type\": \"function\"\n" +
+                "\t},\n" +
+                "\t{\n" +
+                "\t\t\"constant\": true,\n" +
+                "\t\t\"inputs\": [],\n" +
+                "\t\t\"name\": \"validDate\",\n" +
+                "\t\t\"outputs\": [\n" +
+                "\t\t\t{\n" +
+                "\t\t\t\t\"name\": \"\",\n" +
+                "\t\t\t\t\"type\": \"bytes32\"\n" +
+                "\t\t\t}\n" +
+                "\t\t],\n" +
+                "\t\t\"payable\": false,\n" +
+                "\t\t\"stateMutability\": \"view\",\n" +
+                "\t\t\"type\": \"function\"\n" +
+                "\t},\n" +
+                "\t{\n" +
+                "\t\t\"constant\": true,\n" +
+                "\t\t\"inputs\": [],\n" +
                 "\t\t\"name\": \"oracleAddress\",\n" +
                 "\t\t\"outputs\": [\n" +
                 "\t\t\t{\n" +
@@ -340,39 +383,11 @@ public class SmartContractQuery {
                 "\t{\n" +
                 "\t\t\"constant\": true,\n" +
                 "\t\t\"inputs\": [],\n" +
-                "\t\t\"name\": \"scheduleTakeOffTime\",\n" +
-                "\t\t\"outputs\": [\n" +
-                "\t\t\t{\n" +
-                "\t\t\t\t\"name\": \"\",\n" +
-                "\t\t\t\t\"type\": \"uint256\"\n" +
-                "\t\t\t}\n" +
-                "\t\t],\n" +
-                "\t\t\"payable\": false,\n" +
-                "\t\t\"stateMutability\": \"view\",\n" +
-                "\t\t\"type\": \"function\"\n" +
-                "\t},\n" +
-                "\t{\n" +
-                "\t\t\"constant\": true,\n" +
-                "\t\t\"inputs\": [],\n" +
                 "\t\t\"name\": \"contractStatus\",\n" +
                 "\t\t\"outputs\": [\n" +
                 "\t\t\t{\n" +
                 "\t\t\t\t\"name\": \"\",\n" +
                 "\t\t\t\t\"type\": \"uint8\"\n" +
-                "\t\t\t}\n" +
-                "\t\t],\n" +
-                "\t\t\"payable\": false,\n" +
-                "\t\t\"stateMutability\": \"view\",\n" +
-                "\t\t\"type\": \"function\"\n" +
-                "\t},\n" +
-                "\t{\n" +
-                "\t\t\"constant\": true,\n" +
-                "\t\t\"inputs\": [],\n" +
-                "\t\t\"name\": \"validAirlineCode\",\n" +
-                "\t\t\"outputs\": [\n" +
-                "\t\t\t{\n" +
-                "\t\t\t\t\"name\": \"\",\n" +
-                "\t\t\t\t\"type\": \"bytes32\"\n" +
                 "\t\t\t}\n" +
                 "\t\t],\n" +
                 "\t\t\"payable\": false,\n" +
@@ -391,6 +406,20 @@ public class SmartContractQuery {
                 "\t\t],\n" +
                 "\t\t\"payable\": false,\n" +
                 "\t\t\"stateMutability\": \"pure\",\n" +
+                "\t\t\"type\": \"function\"\n" +
+                "\t},\n" +
+                "\t{\n" +
+                "\t\t\"constant\": false,\n" +
+                "\t\t\"inputs\": [\n" +
+                "\t\t\t{\n" +
+                "\t\t\t\t\"name\": \"flightName\",\n" +
+                "\t\t\t\t\"type\": \"bytes32\"\n" +
+                "\t\t\t}\n" +
+                "\t\t],\n" +
+                "\t\t\"name\": \"buyContract\",\n" +
+                "\t\t\"outputs\": [],\n" +
+                "\t\t\"payable\": true,\n" +
+                "\t\t\"stateMutability\": \"payable\",\n" +
                 "\t\t\"type\": \"function\"\n" +
                 "\t},\n" +
                 "\t{\n" +
@@ -420,52 +449,15 @@ public class SmartContractQuery {
                 "\t\t\"constant\": true,\n" +
                 "\t\t\"inputs\": [\n" +
                 "\t\t\t{\n" +
-                "\t\t\t\t\"name\": \"amount\",\n" +
-                "\t\t\t\t\"type\": \"uint256\"\n" +
+                "\t\t\t\t\"name\": \"flightName\",\n" +
+                "\t\t\t\t\"type\": \"bytes32\"\n" +
                 "\t\t\t}\n" +
                 "\t\t],\n" +
-                "\t\t\"name\": \"getPlatformFee\",\n" +
+                "\t\t\"name\": \"whetherSupport\",\n" +
                 "\t\t\"outputs\": [\n" +
                 "\t\t\t{\n" +
                 "\t\t\t\t\"name\": \"\",\n" +
-                "\t\t\t\t\"type\": \"uint256\"\n" +
-                "\t\t\t}\n" +
-                "\t\t],\n" +
-                "\t\t\"payable\": false,\n" +
-                "\t\t\"stateMutability\": \"pure\",\n" +
-                "\t\t\"type\": \"function\"\n" +
-                "\t},\n" +
-                "\t{\n" +
-                "\t\t\"constant\": true,\n" +
-                "\t\t\"inputs\": [],\n" +
-                "\t\t\"name\": \"platformAddress\",\n" +
-                "\t\t\"outputs\": [\n" +
-                "\t\t\t{\n" +
-                "\t\t\t\t\"name\": \"\",\n" +
-                "\t\t\t\t\"type\": \"address\"\n" +
-                "\t\t\t}\n" +
-                "\t\t],\n" +
-                "\t\t\"payable\": false,\n" +
-                "\t\t\"stateMutability\": \"view\",\n" +
-                "\t\t\"type\": \"function\"\n" +
-                "\t},\n" +
-                "\t{\n" +
-                "\t\t\"constant\": false,\n" +
-                "\t\t\"inputs\": [],\n" +
-                "\t\t\"name\": \"buyContract\",\n" +
-                "\t\t\"outputs\": [],\n" +
-                "\t\t\"payable\": true,\n" +
-                "\t\t\"stateMutability\": \"payable\",\n" +
-                "\t\t\"type\": \"function\"\n" +
-                "\t},\n" +
-                "\t{\n" +
-                "\t\t\"constant\": true,\n" +
-                "\t\t\"inputs\": [],\n" +
-                "\t\t\"name\": \"validFlightNumber\",\n" +
-                "\t\t\"outputs\": [\n" +
-                "\t\t\t{\n" +
-                "\t\t\t\t\"name\": \"\",\n" +
-                "\t\t\t\t\"type\": \"uint256\"\n" +
+                "\t\t\t\t\"type\": \"bool\"\n" +
                 "\t\t\t}\n" +
                 "\t\t],\n" +
                 "\t\t\"payable\": false,\n" +
@@ -479,20 +471,12 @@ public class SmartContractQuery {
                 "\t\t\t\t\"type\": \"uint256\"\n" +
                 "\t\t\t},\n" +
                 "\t\t\t{\n" +
-                "\t\t\t\t\"name\": \"airlineCode\",\n" +
+                "\t\t\t\t\"name\": \"date\",\n" +
                 "\t\t\t\t\"type\": \"bytes32\"\n" +
                 "\t\t\t},\n" +
                 "\t\t\t{\n" +
-                "\t\t\t\t\"name\": \"flightNumber\",\n" +
+                "\t\t\t\t\"name\": \"timestampEndOfDate\",\n" +
                 "\t\t\t\t\"type\": \"uint256\"\n" +
-                "\t\t\t},\n" +
-                "\t\t\t{\n" +
-                "\t\t\t\t\"name\": \"scheduleTime\",\n" +
-                "\t\t\t\t\"type\": \"uint256\"\n" +
-                "\t\t\t},\n" +
-                "\t\t\t{\n" +
-                "\t\t\t\t\"name\": \"inputPlatformAddress\",\n" +
-                "\t\t\t\t\"type\": \"address\"\n" +
                 "\t\t\t},\n" +
                 "\t\t\t{\n" +
                 "\t\t\t\t\"name\": \"inputOracleAddress\",\n" +
@@ -603,19 +587,14 @@ public class SmartContractQuery {
                 "\t\t\t},\n" +
                 "\t\t\t{\n" +
                 "\t\t\t\t\"indexed\": false,\n" +
-                "\t\t\t\t\"name\": \"_airlineCode\",\n" +
+                "\t\t\t\t\"name\": \"_date\",\n" +
                 "\t\t\t\t\"type\": \"bytes32\"\n" +
-                "\t\t\t},\n" +
-                "\t\t\t{\n" +
-                "\t\t\t\t\"indexed\": false,\n" +
-                "\t\t\t\t\"name\": \"_flightNumber\",\n" +
-                "\t\t\t\t\"type\": \"uint256\"\n" +
                 "\t\t\t}\n" +
                 "\t\t],\n" +
                 "\t\t\"name\": \"ContractCreated\",\n" +
                 "\t\t\"type\": \"event\"\n" +
                 "\t}\n" +
-                "]";
+                "]\n";
 
         RPCMethod provider = new RPCMethod("api.testnet.iotex.one:80");
         String account_address = "io19dvyeuwpc9lvjx6tu3ndepw3zuvsfdqj8jmk6v";
@@ -634,15 +613,13 @@ public class SmartContractQuery {
 
 
         // contract one
-        String insurance_contract_address = "io15xd7mnhqmjxszt820jy0f74rprauxgd546pzjy";
-        Contract contract_one = new Contract(provider, insurance_contract_address, ABI_CONTRACT_ONE);
+        //String insurance_contract_address = "io15xd7mnhqmjxszt820jy0f74rprauxgd546pzjy";
+        String insurance_contract_address = "io1g20cp3ujntslhm5n5s3mq8rv67dwfqvp3uzdgm";
+        Contract contract_one = new Contract(provider, insurance_contract_address, ABI_CONTRACT_TWO);
         result = contract_one.read(account_address, "getPremium");
         System.out.println(result);
 
         result = contract_one.read(account_address, "oracleAddress");
-        System.out.println(result);
-
-        result = contract_one.read(account_address, "platformAddress");
         System.out.println(result);
 
         result = contract_one.read(account_address, "buyer");
@@ -650,8 +627,8 @@ public class SmartContractQuery {
 
         result = contract_one.read(account_address, "seller");
         System.out.println(result);
-	    
-	result = contract_one.read(account_address, "contractStatus");
+
+        result = contract_one.read(account_address, "contractStatus");
         System.out.println(result);
 
         List flightStatus = contract_one.read(account_address, "flightStatus");
@@ -662,8 +639,8 @@ public class SmartContractQuery {
 
         List benefit = contract_one.read(account_address, "getBenefitByFlightStatus", validMaxBenefit.get(0), flightStatus.get(0));
         System.out.println(benefit);
-	    
-	// create new account
+
+        // create new account
         Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
         Account newAccount = IotexAccount.create();
         String private_key = Numeric.toHexString(newAccount.privateKey());
@@ -671,20 +648,24 @@ public class SmartContractQuery {
         System.out.println(newAccount.address()); // address of new account
 
         String account_private_key = "7a90c8bb40be77f6328e3eb9b02012a8ba9eda206f248ab16df7bdc32b838bf4";
-	Account account = IotexAccount.create(account_private_key);
-	System.out.println(account.address()); // address
-	private_key = Numeric.toHexString(account.privateKey());
-        System.out.println(private_key); // private key
-	
-	GetAccountResponse res = provider.getAccount(GetAccountRequest.newBuilder().setAddress(account.address()).build());
-        System.out.println(res.getAccountMeta().getBalance()); // get balance
-        
-	String amount = "6000000000000000000"; // amount should larger than premium
+        String amount = "6000000000000000000"; // amount should larger than premium
+        Account account = IotexAccount.create(account_private_key);
+        System.out.println("-----------------------");
+        System.out.println(account.address());
+        private_key = Numeric.toHexString(account.privateKey());
+        System.out.println(private_key);
+        GetAccountResponse res = provider.getAccount(GetAccountRequest.newBuilder().setAddress(account.address()).build());
+        System.out.println(res.getAccountMeta().getBalance());
+
+
+
         // gas limit should larger than 1,000,000
-        String hash = contract_one.execute(null, 1000000l, "1000000000000", account, "buyContract", amount);
+        String airline_name = "AS 363";
+        String hash = contract_one.execute(null, 1000000l, "1000000000000", account, "buyContract", amount, airline_name);
         System.out.println(hash);
-        
-        
+
+
+
         /*
 	        // FailureReceiptStatus is the status that contract execution failed
 	        FailureReceiptStatus = 0
@@ -692,7 +673,8 @@ public class SmartContractQuery {
 	        SuccessReceiptStatus = 1
         */
         // fail action
-        String receipt_hash = "385955c37176cbba2de38ca162f8c8d21b5231347fd365432e06331af4ebe61f";
+        //String receipt_hash = "385955c37176cbba2de38ca162f8c8d21b5231347fd365432e06331af4ebe61f";
+        String receipt_hash = "d0c1fd8c35f6934220c907f5581e4e3d9c06be7f2d3157d8477875711a37faaa";
         GetReceiptByActionResponse response = provider.getReceiptByAction(GetReceiptByActionRequest.newBuilder().setActionHash(receipt_hash).build());
         System.out.println(response.getReceiptInfo().getReceipt().getStatus());
 
@@ -700,8 +682,8 @@ public class SmartContractQuery {
         receipt_hash = "007953112a174deeff433ff26ed1bb6b90bb26cd5065a640a175a81af8d9b5e8";
         response = provider.getReceiptByAction(GetReceiptByActionRequest.newBuilder().setActionHash(receipt_hash).build());
         System.out.println(response.getReceiptInfo().getReceipt().getStatus());
-	    
-	IOTX iotx = new IOTX("api.testnet.iotex.one:80");
+
+        IOTX iotx = new IOTX("api.testnet.iotex.one:80");
 
         TransferRequest request = new TransferRequest();
         //request.setNonce(1l); // optional, can be null
@@ -709,12 +691,17 @@ public class SmartContractQuery {
         request.setGasPrice("1000000000000"); // optional, can be null
         request.setAccount(account);
         request.setAmount("1000000000000000000"); // 1 iotex
-        request.setRecipient("io13zt8sznez2pf0q0hqdz2hyl938wak2fsjgdeml");
+        request.setRecipient("io1v5rhssf98ewnarzewmg0uflynz7p49rwf8da30");
 
         hash = iotx.sendTransfer(request);
         System.out.println(hash);
-	    
-	res = provider.getAccount(GetAccountRequest.newBuilder().setAddress(account.address()).build());
+
+        receipt_hash = "2ee9e4dfcbfbcf82b3d49cbe0f6cea9fd477bd0250d1d0e58095cee7eb203392";
+        String receipt_hash2 = "b8e941dfa12f24c25d465950b883a97121a5bf6cac1484c18c3e248eae4ac244";
+        response = provider.getReceiptByAction(GetReceiptByActionRequest.newBuilder().setActionHash(hash).build());
+        System.out.println(response.getReceiptInfo().getReceipt().getStatus());
+
+        res = provider.getAccount(GetAccountRequest.newBuilder().setAddress(account.address()).build());
         System.out.println(res.getAccountMeta().getNumActions());
         long actionNum = res.getAccountMeta().getNumActions();
 
